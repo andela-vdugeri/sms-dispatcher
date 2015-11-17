@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [
+    'uses'          => 'Auth\AuthController@getLogin',
+    'as'            => 'login.page',
+    'middleware'    => ['guest']
+]);
+
+Route::post('/login', [
+    'uses'          => 'Auth\AuthController@postLogin',
+    'as'            => 'user.login',
+    'middleware'    => ['guest']
+]);
