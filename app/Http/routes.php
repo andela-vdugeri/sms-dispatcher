@@ -38,3 +38,9 @@ Route::get('/logout', [
     'as'        => 'user.logout',
     'middleware'=> ['auth']
 ]);
+
+Route::get('/home', [
+    'uses'      => 'HomeController@index',
+    'as'        => 'user.home',
+    'middleware'=> ['auth']
+]);
