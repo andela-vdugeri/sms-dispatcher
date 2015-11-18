@@ -26,3 +26,15 @@ Route::post('/login', [
     'as'            => 'user.login',
     'middleware'    => ['guest']
 ]);
+
+Route::post('/register', [
+    'uses'          => 'Auth\AuthController@postRegister',
+    'as'            => 'user.register',
+    'middleware'    => ['guest']
+]);
+
+Route::get('/logout', [
+    'uses'      => 'Auth\AuthController@getLogout',
+    'as'        => 'user.logout',
+    'middleware'=> ['auth']
+]);

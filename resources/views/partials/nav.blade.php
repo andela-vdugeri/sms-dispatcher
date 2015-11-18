@@ -13,7 +13,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="navbarCollapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#!">Sms</a></li>
+                <li><a href="#!" id="login-link">Login</a></li>
+                <li><a href="#!" id="register-link">Register</a></li>
+                <li><a href="#!">Sms</a></li>
                 <li><a href="#!">About</a></li>
                 <li><a href="#!">Contact</a></li>
                 <li><a href="#!">Clients</a></li>
