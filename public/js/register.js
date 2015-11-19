@@ -8,7 +8,7 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('#register-link').on('click', function(e){
+    $('#register-link').click(function(e){
        e.preventDefault();
        BootstrapDialog.show({
            title: "Register on Simple Sms",
