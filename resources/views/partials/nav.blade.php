@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav">
                 @if(! Auth::user())
                     <li><a href="{{ route('login.page') }}"id="login-link">Login</a></li>
-                    <li><a href="#!" id="register-link">Register</a></li>
+                    <li><a id="register-link">Register</a></li>
                 @endif
                 <li><a href="#!">Sms</a></li>
                 <li><a href="#!">About</a></li>
