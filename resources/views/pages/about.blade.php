@@ -29,34 +29,34 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati molestiae id ipsum ipsa repudiandae. Voluptatum, molestias, quas magnam repellat quos facilis sequi. Ullam optio eius deleniti dolore.</p>
-                                <p>Dolores, corrupti, laborum, officia sit aliquam doloremque accusantium nemo expedita nesciunt vero sunt veniam est quasi doloribus ipsam incidunt perferendis.</p>
+                                <p>Our team of seasoned personnel have much more than massive experience to combat your challenges, and discern the coordinates and further navigations.</p>
+                                <p>We offer you professional advice concerning your business growth opportunities, risk avoidance and management, and breaks where you can cash in for continuous growth and development.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading panel-heading-link">
                             <a data-toggle="collapse" data-parent="#accordion" href="page_about2.html#collapseTwo" class="collapsed">
-                                <i class="fa fa-desktop"></i> Design and code
+                                <i class="fa fa-desktop"></i> Negotiations and Liaison
                             </a>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati molestiae id ipsum ipsa repudiandae. Voluptatum, molestias, quas magnam repellat quos facilis sequi. Ullam optio eius deleniti dolore.</p>
-                                <p>Dolores, corrupti, laborum, officia sit aliquam doloremque accusantium nemo expedita nesciunt vero sunt veniam est quasi doloribus ipsam incidunt perferendis.</p>
+                                <p>We also boast of seasoned negotiations and liaising personnel who will give you a cutting edge and top notch services in your negotiations/liaison deals,
+                                    whether it be business deals or whatever transactions, including merger and acquisitions.</p>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading panel-heading-link">
                             <a data-toggle="collapse" data-parent="#accordion" href="page_about2.html#collapseThree" class="collapsed">
-                                <i class="fa fa-user"></i> Quality and Support
+                                <i class="fa fa-user"></i> Public Relations
                             </a>
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati molestiae id ipsum ipsa repudiandae. Voluptatum, molestias, quas magnam repellat quos facilis sequi. Ullam optio eius deleniti dolore.</p>
-                                <p>Dolores, corrupti, laborum, officia sit aliquam doloremque accusantium nemo expedita nesciunt vero sunt veniam est quasi doloribus ipsam incidunt perferendis.</p>
+                                <p>Our Public Relations aim here is to achieve the best results for our client, impacting the brand as well as the bottom line.  We have extensive experience in creating memorable PR campaigns for emerging and established brands.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -87,37 +87,19 @@
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="text-icon">
-                    <span class="icon-ar icon-ar-lg"><i class="fa fa-tablet"></i></span>
+                    <span class="icon-ar icon-ar-lg"><i class="fa fa-question-circle"></i></span>
                     <div class="text-icon-content">
-                        <h3 class="no-margin">Mobile and Tablet Apps</h3>
-                        <p>Praesentium cumque voluptate harum quae doloribus, atque error debitis, amet velit in similique, necessitatibus odit vero sunt.</p>
+                        <h3 class="no-margin">Advisory Services</h3>
+                        <p>Our team of seasoned personnel have much more than massive experience to combat your challenges, and discern the coordinates and further navigations.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="text-icon">
-                    <span class="icon-ar icon-ar-lg"><i class="fa fa-wordpress"></i></span>
+                    <span class="icon-ar icon-ar-lg"><i class="fa fa-group"></i></span>
                     <div class="text-icon-content">
-                        <h3 class="no-margin">Wordpress Themes</h3>
-                        <p>Praesentium cumque voluptate harum quae doloribus, atque error debitis, amet velit in similique, necessitatibus odit vero sunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="text-icon">
-                    <span class="icon-ar icon-ar-lg"><i class="fa fa-graduation-cap"></i></span>
-                    <div class="text-icon-content">
-                        <h3 class="no-margin">Training and development</h3>
-                        <p>Praesentium cumque voluptate harum quae doloribus, atque error debitis, amet velit in similique, necessitatibus odit vero sunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="text-icon">
-                    <span class="icon-ar icon-ar-lg"><i class="fa fa-paper-plane-o"></i></span>
-                    <div class="text-icon-content">
-                        <h3 class="no-margin">Customer service</h3>
-                        <p>Praesentium cumque voluptate harum quae doloribus, atque error debitis, amet velit in similique, necessitatibus odit vero sunt.</p>
+                        <h3 class="no-margin">Public Relations</h3>
+                        <p> We have extensive experience in creating memorable PR campaigns for emerging and established brands.</p>
                     </div>
                 </div>
             </div>
