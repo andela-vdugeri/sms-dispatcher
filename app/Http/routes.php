@@ -27,6 +27,12 @@ Route::post('/login', [
     'middleware'    => ['guest']
 ]);
 
+Route::get('/register', [
+    'uses'      => 'Auth\AuthController@getRegister',
+    'as'        => 'register.page',
+    'middleware'=> ['guest']
+]);
+
 Route::post('/register', [
     'uses'          => 'Auth\AuthController@postRegister',
     'as'            => 'user.register',
@@ -43,4 +49,10 @@ Route::get('/home', [
     'uses'      => 'HomeController@index',
     'as'        => 'user.home',
     'middleware'=> ['auth']
+]);
+
+
+Route::get('/about', [
+    'uses' => 'PagesController@about',
+    'as'   => 'about'
 ]);

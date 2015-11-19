@@ -8,17 +8,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Latter Africa</a>
+            <a class="navbar-brand" href="{{ url('/') }}">Latter Africa</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="navbarCollapse">
             <ul class="nav navbar-nav">
                 @if(! Auth::user())
                     <li><a href="{{ route('login.page') }}"id="login-link">Login</a></li>
-                    <li><a id="register-link">Register</a></li>
+                    <li><a href="{{ route('register.page') }}" id="register-link">Register</a></li>
                 @endif
                 <li><a href="#!">Sms</a></li>
-                <li><a href="#!">About</a></li>
+                <li><a href="{{ route('about') }}">About</a></li>
                 <li><a href="#!">Contact</a></li>
                 <li><a href="#!">Clients</a></li>
                 @if(Auth::user())
