@@ -62,6 +62,7 @@ function registerUser(dialog)
     $.ajax({
         url: '/register',
         type: 'post',
+        crossDomain: true,
         data : {
             name: name,
             email: email,
