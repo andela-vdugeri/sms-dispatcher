@@ -26,11 +26,11 @@
                                         <h1 class="animated fadeInDownBig animation-delay-7 carousel-title">&nbsp;</h1>
                                         <h2 class="animated fadeInDownBig animation-delay-5  crousel-subtitle">We give you everything done, except the coffee</h2>
                                         <ul class="list-unstyled carousel-list">
-                                            <li class="animated bounceInLeft animation-delay-11"><i class="fa fa-check"></i>Built with Bootstrap</li>
-                                            <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>HTML5 and CSS3</li>
-                                            <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Responsive Template</li>
+                                            <li class="animated bounceInLeft animation-delay-11"><i class="fa fa-check"></i>Brand Management, Research and Development</li>
+                                            <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>Sophisticated Messaging Services</li>
+                                            <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Focused on building and growing with you</li>
                                         </ul>
-                                        <p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>
+                                        {{--<p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>--}}
                                     </div>
                                 </div>
                             </div>
@@ -51,11 +51,11 @@
                                         <h1 class="animated fadeInDownBig animation-delay-7 carousel-title">&nbsp;</h1>
                                         <h2 class="animated fadeInDownBig animation-delay-5  crousel-subtitle">Configure your own sms profile in few easy steps</h2>
                                         <ul class="list-unstyled carousel-list">
-                                            <li class="animated bounceInLeft animation-delay-11"><i class="fa fa-check"></i>25 default colors</li>
-                                            <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>Variables less for all colors</li>
-                                            <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Full width and boxed mode</li>
+                                            <li class="animated bounceInLeft animation-delay-11"><i class="fa fa-check"></i>Our Pride and Achievement is in seeing you through</li>
+                                            <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>A team of seasoned personnel</li>
+                                            <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Trust us and we take you through.</li>
                                         </ul>
-                                        <p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>
+                                        {{--<p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>--}}
                                     </div>
                                 </div>
                             </div>
@@ -76,9 +76,9 @@
                                         <h1 class="animated fadeInDownBig animation-delay-7 carousel-title">&nbsp;</h1>
                                         <h2 class="animated fadeInDownBig animation-delay-5  crousel-subtitle">Simple sms offers you instant delivery sms to all networks, no worries.</h2>
                                         <ul class="list-unstyled carousel-list">
-                                            <li class="animated bounceInLeft animation-delay-11"><i class="fa fa-check"></i>84 HTML Templates</li>
-                                            <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>More than 50 components</li>
-                                            <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Extra CSS classes</li>
+                                            <li class="animated bounceInLeft animation-delay-11"><i class="fa fa-check"></i>Expert Business Development Consulting</li>
+                                            <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>Expert Strategy Formulation</li>
+                                            <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Expert System Building</li>
                                         </ul>
                                         <p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>
                                     </div>
@@ -109,30 +109,31 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="content-box box-default animated fadeInUp animation-delay-10">
-                        <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-html5"></i></span>
-                        <h4 class="content-box-title">Lorem ipsum dolor</h4>
-                        <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                        <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-envelope"></i></span>
+                        <h4 class="content-box-title">Sophisticated Messaging</h4>
+                        <p>We offer sophisticated messaging services which includes voice and sms,which covers professional SMS messaging for authentication, alerting and marketing.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="content-box box-default animated fadeInUp animation-delay-14">
-                        <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-css3"></i></span>
-                        <h4 class="content-box-title">Lorem ipsum dolor</h4>
-                        <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                        <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-map"></i></span>
+                        <h4 class="content-box-title">Bridge builders</h4>
+                        <p>We are the bridge and linkage between where you are in the business today and your dream business destination. We are familiar with the rough and uneasy terrain in between, trust us and we take you through.
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="content-box box-default animated fadeInUp animation-delay-16">
-                        <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-desktop"></i></span>
-                        <h4 class="content-box-title">Lorem ipsum dolor</h4>
-                        <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                        <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-star"></i></span>
+                        <h4 class="content-box-title">Outstanding Services</h4>
+                        <p>Our team of seasoned personnel have much more than massive experience to combat your challenges, and discern the coordinates and further navigation. We offer you professional advice concerning your business.</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="content-box box-default animated fadeInUp animation-delay-12">
                         <span class="icon-ar icon-ar-lg icon-ar-round icon-ar-inverse"><i class="fa fa-flag"></i></span>
-                        <h4 class="content-box-title">Lorem ipsum dolor</h4>
-                        <p>Consectetur adipisicing elit vritatis dolor rem officia molestiae atque eveniet inventore earum quas voluptates cumque</p>
+                        <h4 class="content-box-title">We believe in you</h4>
+                        <p>Understanding that the small business of today is the global champion tomorrow. And also that the future belongs to those who aspire. We are positioned by commission and practice to be the spring board for the lofty leap of small/emerging businesses (SMEs).</p>
                     </div>
                 </div>
             </div>
