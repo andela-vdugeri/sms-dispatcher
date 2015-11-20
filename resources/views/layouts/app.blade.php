@@ -46,8 +46,8 @@
 <script src="{!! secure_asset('js/bootstrap.js') !!}"></script>
 <script src="{!! asset('js/toastr.min.js') !!}"></script>
 <script src="{!! secure_asset('js/toastr.min.js') !!}"></script>
-<script src="{!! asset('js/register.js') !!}"></script>
-<script src="{!! secure_asset('js/register.js') !!}"></script>
+<script src="{!! asset('js/messages.js') !!}"></script>
+<script src="{!! secure_asset('js/messages.js') !!}"></script>
 <script src="{!! asset('js/login.js') !!}"></script>
 <script src="{!! secure_asset('js/login.js') !!}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>

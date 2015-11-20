@@ -74,3 +74,4 @@ Route::get('messages/history', [
     'as'        => 'messages.history',
     'middleware'=> ['auth']
 ]);
+
