@@ -17,7 +17,7 @@
                     <li><a href="{{ route('login.page') }}"id="login-link">Login</a></li>
                     <li><a href="{{ route('register.page') }}" id="register-link">Register</a></li>
                 @endif
-                <li><a href="#!">Sms</a></li>
+                <li><a href="{{ route('messages.page') }}">Sms</a></li>
                 <li><a href="{{ route('about') }}">About</a></li>
                 <li><a href="#!">Contact</a></li>
                 <li><a href="#!">Clients</a></li>

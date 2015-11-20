@@ -56,3 +56,21 @@ Route::get('/about', [
     'uses' => 'PagesController@about',
     'as'   => 'about'
 ]);
+
+Route::get('/message', [
+    'uses'       => 'PagesController@messages',
+    'as'         => 'messages.page',
+    'middleware' => ['auth']
+]);
+
+Route::get('/messages/units',[
+   'uses'       => 'PagesController@getMessageUnits',
+    'as'        => 'messages.get.units',
+    'middleware'=> ['auth']
+]);
+
+Route::get('messages/history', [
+    'uses'      => 'PagesController@getMessagesHistory',
+    'as'        => 'messages.history',
+    'middleware'=> ['auth']
+]);

@@ -78,7 +78,7 @@
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="text-icon">
-                    <span class="icon-ar icon-ar-lg"><i class="fa fa-desktop"></i></span>
+                    <span class="icon-ar icon-ar-lg"><i class="fa fa-wrench"></i></span>
                     <div class="text-icon-content">
                         <h3 class="no-margin">Business Development</h3>
                         <p> Our goal, pride and achievement is in seeing you through the accomplishments of your great goals.</p>
