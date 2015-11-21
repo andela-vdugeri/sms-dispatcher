@@ -14,23 +14,27 @@ $(document).ready(function(){
         numberOfMessages = Math.ceil(messageLength/160);
 
         var messages = numberOfMessages * numbers;
-
+        countMessages(messages);
         $('#logger').empty().append("Messages: "+messages);
 
     });
 
     $('#send-messages').click(function(e){
         e.preventDefault();
-
         var numbers = getNumbers();
         var message = $("#inputMessage").val();
+
+        var numberOfMessages =  Math.ceil((message.length)/160);
+        var messages = numberOfMessages * numbers.length;
+
 
         $.ajax({
             type: 'post',
             url: '/message/send',
             data: {
                 'to': numbers,
-                'text': message
+                'text': message,
+                'units': messages
             },
 
             success: function(response, status, xhr) {
@@ -76,9 +80,9 @@ $(document).ready(function(){
                 }
             }
 
-        })
+        });
 
-    })
+    });
 });
 
 function getNumbers(){
@@ -106,5 +110,9 @@ function processNumber(number)
 
         return "+234"+number.trim();
     }
+}
 
+function countMessages(numberOfMessages)
+{
+    return numberOfMessages;
 }

@@ -10,6 +10,6 @@ class UserPayment extends Model
 
     protected $fillable = [
     	'user_id', 
-    	'ammout'
+    	'amount'
     ];
 }

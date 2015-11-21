@@ -8,7 +8,7 @@ class UserMessage extends Model
 {
     //
 
-    $protected $fillable = [
+    protected $fillable = [
     	'transaction_id',
     	'user_id',
     	'message'
