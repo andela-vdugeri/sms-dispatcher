@@ -75,3 +75,8 @@ Route::get('messages/history', [
     'middleware'=> ['auth']
 ]);
 
+Route::post('/message/send', [
+    'uses'      => 'MessagesController@send',
+    'as'        => 'message.send',
+    'middleware'=> ['auth']
+]);

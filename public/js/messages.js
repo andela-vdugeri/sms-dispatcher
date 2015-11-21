@@ -22,13 +22,89 @@ $(document).ready(function(){
     $('#send-messages').click(function(e){
         e.preventDefault();
 
-        var numbers = $("#inputPhoneNumbers").val();
+        var numbers = getNumbers();
         var message = $("#inputMessage").val();
+
+        $.ajax({
+            type: 'post',
+            url: '/message/send',
+            data: {
+                'to': numbers,
+                'text': message
+            },
+
+            success: function(response, status, xhr) {
+                toastr["success"]("Message sent!");
+
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            },
+            error: function(response, status, xhr) {
+                toastr["error"]("Sorry. But we could not send your message. Please try again")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-center",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+
+        })
 
     })
 });
 
 function getNumbers(){
+    var numberArray = [];
     var numberString = $('#inputPhoneNumbers').val();
-    return  numberString.split(',');
+    var numbers =  numberString.split(',');
+
+    numbers.forEach(function(number){
+        var internationalizedNumber = processNumber(number);
+        if(!(internationalizedNumber === undefined)) {
+            numberArray.push(internationalizedNumber);
+        }
+
+    });
+
+    return numberArray;
+}
+
+function processNumber(number)
+{
+    if(!(number.trim() === '')){
+        if (number.trim().charAt(0) === '0') {
+            return "+234"+number.trim().slice(1, number.length);
+        }
+
+        return "+234"+number.trim();
+    }
+
 }
