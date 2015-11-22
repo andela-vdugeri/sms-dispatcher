@@ -27,6 +27,11 @@ Route::post('/login', [
     'middleware'    => ['guest']
 ]);
 
+Route::get('/login/{provider}',[
+    'uses'  => 'Auth\AuthController@doSocial',
+    'as'    => 'social.login',
+]);
+
 Route::get('/register', [
     'uses'      => 'Auth\AuthController@getRegister',
     'as'        => 'register.page',

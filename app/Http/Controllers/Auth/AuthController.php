@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Repositories\UserRepository;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\AuthenticateUser;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Contracts\Auth\Guard;
 
 class AuthController extends Controller
 {
@@ -23,16 +28,31 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $redirectPath = "/home";
+    protected $redirectPath = "/message";
     protected $registerPath = "/register";
     protected $loginPath = '/login';
     protected $redirectTo = '/';
+
     /**
+     * @var UserRepository
+     */
+    private $userRepository;
+    /**
+     * @var Guard
+     */
+    private $auth;
+
+    /**
+     * @param UserRepository $userRepository
+     * @param Guard $auth
+     *
      * Construct the class instance.
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository, Guard $auth)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+        $this->userRepository = $userRepository;
+        $this->auth = $auth;
     }
 
     /**
@@ -64,4 +84,33 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * @param AuthenticateUser $authenticate
+     * @param Request $request
+     * @param $provider
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     * Initiate the social login process.
+     */
+    public function doSocial(AuthenticateUser $authenticate, Request $request, $provider)
+    {
+        return $authenticate->execute(($request->has('code') || $request->has('oauth_token')), $this, $provider);
+    }
+
+    /**
+     * @param $user
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Log in the user into the system.
+     */
+    public function userAuthenticated($user)
+    {
+        $authUser = $this->userRepository->findBySocialIdOrCreate($user);
+
+        $this->auth->login($authUser);
+
+        return redirect()->route('messages.page');
+    }
+
 }

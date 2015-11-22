@@ -27,9 +27,9 @@
                                 <label for="checkbox_remember">Remember me</label>
                             </div>
                             <button type="submit" class="btn btn-ar btn-primary pull-right">Login</button>
-                            <a href="page_login.html#" class="social-icon-ar sm twitter animated fadeInDown animation-delay-2"><i class="fa fa-twitter"></i></a>
-                            <a href="page_login.html#" class="social-icon-ar sm google-plus animated fadeInDown animation-delay-3"><i class="fa fa-google-plus"></i></a>
-                            <a href="page_login.html#" class="social-icon-ar sm facebook animated fadeInDown animation-delay-4"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ route('social.login', 'twitter') }}" class="social-icon-ar sm twitter animated fadeInDown animation-delay-2"><i class="fa fa-twitter"></i></a>
+                            <a href="#!" class="social-icon-ar sm google-plus animated fadeInDown animation-delay-3"><i class="fa fa-google-plus"></i></a>
+                            <a href="{{ route('social.login', 'facebook') }}" class="social-icon-ar sm facebook animated fadeInDown animation-delay-4"><i class="fa fa-facebook"></i></a>
                             <div class="clearfix"></div>
                         </div>
                     </form>
