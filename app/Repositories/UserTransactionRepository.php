@@ -46,7 +46,7 @@ class UserTransactionRepository
     public function createTransaction(Request $request)
     {
         $this->transaction->user_id = Auth::user()->id;
-        $this->transaction->message_Units = $request->get('units');
+        $this->transaction->message_units = $request->get('units');
         $this->transaction->receivers = implode(',', $request->get('to'));
         $this->transaction->save();
 
