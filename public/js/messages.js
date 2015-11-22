@@ -78,7 +78,7 @@ $(document).ready(function(){
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-            }
+           }
 
         });
 
