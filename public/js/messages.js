@@ -19,7 +19,7 @@ $(document).ready(function(){
 
     });
 
-    $('#send-messages').click(function(e){
+    $('#message-form').submit(function(e){
         e.preventDefault();
         var numbers = getNumbers();
         var message = $("#inputMessage").val();

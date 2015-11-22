@@ -18,7 +18,7 @@
                 <div class="panel panel-info-dark animated fadeInDown" style="margin-top: 70px;">
                     <div class="panel-heading">Send Messages</div>
                     <div class="panel-body">
-
+                        <form action="#" method="post" id="message-form">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                             <div class="form-group">
                                 <label for="InputPhoneNumbers">Receiver Phone Numbers(separated by commas)<sup>*</sup></label>
@@ -40,10 +40,10 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="button" class="btn btn-ar btn-primary pull-right" id="send-messages">Send</button>
+                                    <button type="submit" class="btn btn-ar btn-primary pull-right" id="send-messages">Send</button>
                                 </div>
                             </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
