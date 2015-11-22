@@ -21,6 +21,7 @@ $(document).ready(function(){
 
     $('#message-form').submit(function(e){
         e.preventDefault();
+        e.stopPropagation();
         var numbers = getNumbers();
         var message = $("#inputMessage").val();
 
