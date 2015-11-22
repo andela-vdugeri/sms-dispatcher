@@ -4,6 +4,8 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+});
+
 
     $('#inputMessage').on('keyup', function(){
         var message = $(this).val();
@@ -84,7 +86,6 @@ $(document).ready(function(){
         });
 
     });
-});
 
 function getNumbers(){
     var numberArray = [];
