@@ -39,7 +39,7 @@ class UserRepository
     public function findBySocialIdOrCreate($user)
     {
         $authUser = User::firstOrNew(['social_id' => $user->id]);
-        
+
         if(! is_null($authUser->id)) {
             return $authUser;
         }
