@@ -117,7 +117,7 @@ class MessagesController extends Controller
            //save user transaction
            $transId = $this->transactionsRepository->createTransaction($request);
 
-            //save message details;
+           //save message details;
            $this->messagesRepository->saveUserMessage($transId, $request->get('text'), Auth::user()->id);
 
            return response()->json($response);
@@ -159,7 +159,6 @@ class MessagesController extends Controller
         ]);
 
     }
-
     /**
      * Send the actual message to the client.
      *
