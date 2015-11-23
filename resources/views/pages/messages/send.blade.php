@@ -40,7 +40,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-ar btn-primary pull-right" id="send-messages">Send</button>
+                                    <button type="submit" class="btn btn-ar btn-primary pull-right">Send</button>
                                 </div>
                             </div>
                         </form>

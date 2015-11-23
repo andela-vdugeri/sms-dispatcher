@@ -20,7 +20,7 @@ $(document).ready(function(){
 
     });
 
-    $('#message-form').submit(function(e){
+    $('#message-form').on("submit", function(e){
         e.preventDefault();
 
         console.log('clicked');
