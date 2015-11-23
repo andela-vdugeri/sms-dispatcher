@@ -4,7 +4,6 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-});
 
 
     $('#inputMessage').on('keyup', function(){
@@ -23,7 +22,9 @@ $(document).ready(function(){
 
     $('#message-form').submit(function(e){
         e.preventDefault();
-        e.stopPropagation();
+
+        console.log('clicked');
+
         var numbers = getNumbers();
         var message = $("#inputMessage").val();
 
@@ -81,11 +82,15 @@ $(document).ready(function(){
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-           }
+            }
 
         });
 
     });
+});
+
+
+
 
 function getNumbers(){
     var numberArray = [];

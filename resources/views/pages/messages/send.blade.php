@@ -18,7 +18,7 @@
                 <div class="panel panel-info-dark animated fadeInDown" style="margin-top: 70px;">
                     <div class="panel-heading">Send Messages</div>
                     <div class="panel-body">
-                        <form action="#" method="post" id="message-form">
+                        <form  method="post" id="message-form">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                             <div class="form-group">
                                 <label for="InputPhoneNumbers">Receiver Phone Numbers(separated by commas)<sup>*</sup></label>
