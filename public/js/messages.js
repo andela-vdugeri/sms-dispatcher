@@ -23,14 +23,14 @@ $(document).ready(function(){
     $('#message-form').on("submit", function(e){
         e.preventDefault();
 
-        console.log('clicked');
-
         var numbers = getNumbers();
         var message = $("#inputMessage").val();
+        var $this = $(this);
 
         var numberOfMessages =  Math.ceil((message.length)/160);
         var messages = numberOfMessages * numbers.length;
 
+        $this.find(":submit").attr("disabled","disabled");
 
         $.ajax({
             type: 'post',
@@ -43,6 +43,7 @@ $(document).ready(function(){
 
             success: function(response, status, xhr) {
                 toastr["success"]("Message sent!");
+                $this.find(":submit").removeAttr("disabled");
 
                 toastr.options = {
                     "closeButton": true,
@@ -63,6 +64,7 @@ $(document).ready(function(){
                 }
             },
             error: function(response, status, xhr) {
+                $this.find(":submit").removeAttr("disabled");
                 toastr["error"]("Sorry. But we could not send your message. Please try again")
 
                 toastr.options = {
