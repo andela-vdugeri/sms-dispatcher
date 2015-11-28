@@ -13,4 +13,9 @@ class UserTransaction extends Model
     	'message_units',
     	'receivers'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

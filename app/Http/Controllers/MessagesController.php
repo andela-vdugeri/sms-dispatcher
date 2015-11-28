@@ -101,6 +101,7 @@ class MessagesController extends Controller
         //
     }
 
+
     /**
      * Send a message and save the transaction details
      *

@@ -75,7 +75,7 @@ Route::get('/messages/units',[
 ]);
 
 Route::get('messages/history', [
-    'uses'      => 'PagesController@getMessagesHistory',
+    'uses'      => 'UserController@history',
     'as'        => 'messages.history',
     'middleware'=> ['auth']
 ]);

@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 
+use App\User;
 use App\UserTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,10 @@ class UserTransactionRepository
 
     public function getAllTransactions()
     {
-        return UserTransaction::all();
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        return $user->transactions;
     }
 
     public function destroyUserTransaction($id, $userId)

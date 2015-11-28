@@ -14,4 +14,12 @@ class UserSubscription extends Model
     	'user_id',
     	'message_units'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
