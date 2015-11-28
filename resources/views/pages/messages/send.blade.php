@@ -13,20 +13,26 @@
         </ul>
 
         <div class="row">
+
             <div class="col-md-7 col-lg-offset-2">
 
                 <div class="panel panel-info-dark animated fadeInDown" style="margin-top: 70px;">
                     <div class="panel-heading">Send Messages</div>
                     <div class="panel-body">
-                        <form  method="post" id="message-form">
+                      @if (session()->has('info'))
+                        <div class="alert-success text-center"><h2>{{ session()->get('info') }}</h2></div>
+                      @endif
+                        <form  method="post" id="message-form" action="{{ route('message.send')}}">
                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                             <div class="form-group">
                                 <label for="InputPhoneNumbers">Receiver Phone Numbers(separated by commas)<sup>*</sup></label>
-                                <textarea name="numbers" placeholder="Receiver cell phone numbers... eg 07089898998,08097878667 ..." id="inputPhoneNumbers" class="form-control" rows="5"></textarea>
+                                <textarea name="numbers" placeholder="Receiver cell phone numbers... eg 07089898998,08097878667 ..."
+                                          id="inputPhoneNumbers" class="form-control" rows="5">{{Input::old('numbers')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="inputMessage">Message<sup>*</sup></label>
-                                <textarea id="inputMessage" class="form-control" name="message" placeholder="Text message here..." rows="5"></textarea>
+                                <textarea id="inputMessage" class="form-control" name="message" placeholder="Text message here..."
+                                          rows="5">{{ Input::old('message') }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col-md-8" id="logger">

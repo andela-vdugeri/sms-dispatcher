@@ -101,7 +101,8 @@ class MessagesController extends Controller
         //
     }
 
-    /**Send a message and save the transaction details
+    /**
+     * Send a message and save the transaction details
      *
      * @param Request $request
      * @param Client $client
@@ -110,20 +111,20 @@ class MessagesController extends Controller
     public function send(Request $request, Client $client)
     {
 
-        if($request->ajax()){
-           //send the message
-           $response = $this->sendMessage($client, $request);
 
-           //save user transaction
-           $transId = $this->transactionsRepository->createTransaction($request);
+        //send the message
+        $response = $this->sendMessage($client, $request);
 
-           //save message details;
-           $this->messagesRepository->saveUserMessage($transId, $request->get('text'), Auth::user()->id);
+        //calculate number of units to be deducted
+        $units = $this->transactionsRepository->calculateUnits($this->getRequestBody($request));
 
-           return response()->json($response);
-        }
+        //save user transaction
+        $transId = $this->transactionsRepository->createTransaction($request, $units);
 
-        return redirect()->back();
+        //save message details;
+        $this->messagesRepository->saveUserMessage($transId, $request->get('message'), Auth::user()->id);
+
+        return redirect()->back()->with('info', 'message sent')->withInput();
     }
 
     /**
@@ -132,15 +133,15 @@ class MessagesController extends Controller
      */
     public function getRequestHeaders()
     {
-        $user = env('SMS_ENDPOINT_USER');
+        $user     = env('SMS_ENDPOINT_USER');
         $password = env('SMS_ENDPOINT_PASS');
 
         $authorization = base64_encode($user.':'.$password);
 
         return [
-            'acccept' => 'application/json',
-            'content-type' => 'application/json',
-            'authorization' => 'Basic '.$authorization,
+            'acccept'         => 'application/json',
+            'content-type'    => 'application/json',
+            'authorization'   => 'Basic '.$authorization,
         ];
     }
 
@@ -154,8 +155,8 @@ class MessagesController extends Controller
     {
         return json_encode([
             'from' => Auth::user()->name,
-            'to'   => $request->get('to'),
-            'text' => $request->get('text')
+            'to'   => $this->getNumbers($request->get('numbers')),
+            'text' => $request->get('message')
         ]);
 
     }
@@ -168,6 +169,7 @@ class MessagesController extends Controller
      */
     public function sendMessage(Client $client, $request)
     {
+
         $smsRequest = new Guzzle('POST', env('SMS_ENDPOINT'), $this->getRequestHeaders(), $this->getRequestBody($request));
 
         try{
@@ -177,6 +179,46 @@ class MessagesController extends Controller
             return $e->getMessage();
         }
 
+    }
+
+    public function getNumbers($numbers)
+    {
+        $numberArray = explode(',', $numbers);
+        $trimmedNumbers = [];
+        foreach ($numberArray as $key => $value) {
+          $trimmedNumber = trim($value);
+          if ($trimmedNumber == "") {
+            continue;
+          }
+          $trimmedNumbers[$key] = $trimmedNumber;
+        }
+
+        return $this->trimLeadingZero($trimmedNumbers);
+    }
+
+    public function addCodeToNumbers(array $numbers)
+    {
+        $prefixedNumbers = [];
+
+        foreach ($numbers as $key => $value) {
+          $prefixedNumbers[$key] = '+234'.$value;
+        }
+
+        return $prefixedNumbers;
+    }
+
+    public function trimLeadingZero(array $numbers)
+    {
+        $trimmedNumbers = [];
+
+        foreach ($numbers as $key => $value) {
+          if ($value[0] === 0) {
+            $trimmedNumbers[$key] = substr($value, 1);
+          }
+          $trimmedNumbers[$key] = $value;
+        }
+
+        return $this->addCodeToNumbers($trimmedNumbers);
     }
 
 }

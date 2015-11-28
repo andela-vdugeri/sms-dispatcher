@@ -43,13 +43,24 @@ class UserTransactionRepository
             $userTransaction->delete();
     }
 
-    public function createTransaction(Request $request)
+    public function createTransaction(Request $request, $units)
     {
         $this->transaction->user_id = Auth::user()->id;
-        $this->transaction->message_units = $request->get('units');
-        $this->transaction->receivers = implode(',', $request->get('to'));
+        $this->transaction->message_units = $units;
+        $this->transaction->receivers = $request->get('numbers');
         $this->transaction->save();
 
         return $this->transaction->id;
+    }
+
+    public function calculateUnits($requestBody)
+    {
+      $data             = json_decode($requestBody);
+      $messageLength    = strlen($data->text);
+      $numbers          = count($data->to);
+      $numberOfMessages = ceil($messageLength/160);
+      $units            =  $numberOfMessages * $numbers;
+
+      return $units;
     }
 }
