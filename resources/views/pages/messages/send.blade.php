@@ -40,7 +40,7 @@
 
                                         <ul>
                                             @foreach($errors->all() as $error)
-                                                <li style="color:#ff0000; list-style: none"><i class="fa fa-exclamation"></i>{{ $error }}</li>
+                                                {{--<li style="color:#ff0000; list-style: none"><i class="fa fa-exclamation"></i>{{ $error }}</li>--}}
                                             @endforeach
                                         </ul>
                                     @endif

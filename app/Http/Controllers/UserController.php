@@ -51,4 +51,9 @@ class UserController extends Controller
 
         return view('pages.messages.history', compact('transactions', 'messages'));
     }
+
+    public function deleteHistory($id)
+    {
+        //$transaction =
+    }
 }

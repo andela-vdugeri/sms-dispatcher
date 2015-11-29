@@ -33,7 +33,7 @@
                             </ul>
                         </div>
                         <div class="pricing-box-footer">
-                            <a href="page_pricing.html#" class="btn btn-ar btn-default">Delete</a>
+                            <a href="{{ route('history.delete') }}" class="btn btn-ar btn-default">Delete</a>
                         </div>
                     </div>
                 </div>

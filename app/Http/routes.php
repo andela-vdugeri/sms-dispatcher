@@ -80,6 +80,12 @@ Route::get('messages/history', [
     'middleware'=> ['auth']
 ]);
 
+Route::get('/history/{{id}}',[
+    'uses'          => 'UserController@deleteHistory',
+    'as'            => 'history.delete',
+    'middleware'    => ['auth']
+]);
+
 Route::post('/message/send', [
     'uses'      => 'MessagesController@send',
     'as'        => 'message.send',
