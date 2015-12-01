@@ -50,4 +50,12 @@ class MessagesRepository
         return $user->messages;
     }
 
+    public function findTransactionMessages($id)
+    {
+        $userMessage = UserMessage::where('transaction_id', $id)->first();
+
+        return $userMessage->message;
+
+    }
+
 }

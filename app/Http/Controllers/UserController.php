@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\MessagesRepository;
-use App\Repositories\UserRepository;
-use App\Repositories\UserTransactionRepository;
-use Illuminate\Http\Request;
-
+use App\UserMessage;
 use App\Http\Requests;
+use App\UserTransaction;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
+use App\Repositories\MessagesRepository;
+use App\Repositories\UserTransactionRepository;
+
 
 class UserController extends Controller
 {
@@ -47,13 +49,23 @@ class UserController extends Controller
     public function history()
     {
         $transactions   = $this->userTransaction->getAllTransactions();
-        $messages       = $this->messageRepo->getAllMessages();
-
-        return view('pages.messages.history', compact('transactions', 'messages'));
+        $repo = $this->messageRepo;
+        return view('pages.messages.history', compact('transactions', 'repo'));
     }
 
     public function deleteHistory($id)
     {
-        //$transaction =
+        $transaction = UserTransaction::find($id);
+
+        if( !(auth()->user()->id == $transaction->user->id)) {
+            return redirect()->action('HomeController@index');
+        }
+
+        $userMessages = UserMessage::where('transaction_id', $transaction->id);
+        $userMessages->delete();
+
+        $transaction->delete();
+
+        return redirect()->back();
     }
 }

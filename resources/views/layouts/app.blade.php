@@ -50,6 +50,20 @@
 <script src="{!! secure_asset('js/messages.js') !!}"></script>
 <script src="{!! asset('js/login.js') !!}"></script>
 <script src="{!! secure_asset('js/login.js') !!}"></script>
+
+<script src="{{ asset('js/vendors.js') }}"></script>
+<script src="{{ secure_asset('js/vendors.js') }}"></script>
+
+<script src="{{ assets('js/styleswitcher.js') }}"></script>
+<script src="{{ secure_assets('js/styleswitcher.js') }}"></script>
+
+<!-- Syntaxhighlighter -->
+<script src="assets/js/syntaxhighlighter/shCore.js"></script>
+<script src="assets/js/syntaxhighlighter/shBrushXml.js"></script>
+<script src="assets/js/syntaxhighlighter/shBrushJScript.js"></script>
+
+<script src="assets/js/app.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
 </body>
 </html>

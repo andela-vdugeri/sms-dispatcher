@@ -25,15 +25,13 @@
                         </div>
                         <div class="pricing-box-content">
                             <ul>
-                                <li><i class="fa fa-inbox"></i> Exercitation in id in officia.</li>
-                                <li><i class="fa fa-cloud-download"></i> Exercitation in id in officia.</li>
-                                <li><i class="fa fa-dashboard"></i> Exercitation in id in officia.</li>
-                                <li><i class="fa fa-sitemap"></i> Exercitation in id in officia.</li>
-                                <li><i class="fa fa-shopping-cart"></i> Exercitation in id in officia.</li>
+                                <li><i class="fa fa-envelope-o"></i>{{ $repo->findTransactionMessages($transaction->id) }}</li>
+                                <li><i class="fa fa-phone"></i>{{ $transaction->receivers }}</li>
+                                <li><i class="fa fa-user"></i>{{ $transaction->user->name }}</li>
                             </ul>
                         </div>
                         <div class="pricing-box-footer">
-                            <a href="{{ route('history.delete') }}" class="btn btn-ar btn-default">Delete</a>
+                            <a href="{{ route('history.delete', $transaction->id) }}" class="btn btn-ar btn-default">Delete</a>
                         </div>
                     </div>
                 </div>
