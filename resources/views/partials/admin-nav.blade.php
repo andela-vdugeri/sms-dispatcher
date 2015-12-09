@@ -13,7 +13,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="navbarCollapse">
             <ul class="nav navbar-nav">
-                <li><a href="#">Users</a></li>
+                <li><a href="{{ route('list.users') }}">Users</a></li>
                 <li><a href="#">Confirm Payment</a></li>
                 <li><a href="#!">Contact</a></li>
                 <li><a href="#!">Clients</a></li>
