@@ -26,6 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies($gate);
 
-        //
+        $gate->define('is-admin', function($user){
+            $roles = User::find($user->id)->roles()->orderBy('role_name')->get();
+            return array_key_exists('admin', $roles);
+        });
     }
 }

@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Repositories\UserRepository;
+
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use App\Role;
 use Validator;
+use App\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
+use Illuminate\Contracts\Auth\Guard;
 use App\Repositories\AuthenticateUser;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Contracts\Auth\Guard;
 
 class AuthController extends Controller
 {
@@ -43,16 +46,23 @@ class AuthController extends Controller
     private $auth;
 
     /**
+     * 
+     * @var UserRole
+     */
+    private $userRole;
+
+    /**
      * @param UserRepository $userRepository
      * @param Guard $auth
      *
      * Construct the class instance.
      */
-    public function __construct(UserRepository $userRepository, Guard $auth)
+    public function __construct(UserRepository $userRepository, Guard $auth, UserRole $userRole)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
         $this->userRepository = $userRepository;
         $this->auth = $auth;
+        $this->userRole = $userRole;
     }
 
     /**
@@ -111,6 +121,12 @@ class AuthController extends Controller
         $this->auth->login($authUser);
 
         return redirect()->route('messages.page');
+    }
+
+    public function authenticated(Request $request, User $user)
+    {
+
+        dd('here');
     }
 
 }

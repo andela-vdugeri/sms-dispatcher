@@ -2,18 +2,23 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Welcome Route
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for authentication.
+| 
+|
+*/
 
 Route::get('/login', [
     'uses'          => 'Auth\AuthController@getLogin',
@@ -49,6 +54,17 @@ Route::get('/logout', [
     'as'        => 'user.logout',
     'middleware'=> ['auth']
 ]);
+
+
+/*
+|--------------------------------------------------------------------------
+| User Action Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for user actions.
+| 
+|
+*/
 
 Route::get('/home', [
     'uses'      => 'HomeController@index',
@@ -90,4 +106,21 @@ Route::post('/message/send', [
     'uses'      => 'MessagesController@send',
     'as'        => 'message.send',
     'middleware'=> ['auth']
+]);
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Action Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an admin.
+| 
+*/
+
+
+Route::get('/admin/users', [
+    'uses' => 'AdminController@listUsers',
+    'as'    => 'list.users',
+    'middleware'=> ['admin']
 ]);
