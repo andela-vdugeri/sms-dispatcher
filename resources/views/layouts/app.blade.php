@@ -20,7 +20,9 @@
 <link href="{!! secure_asset('css/style-blue.css') !!}" rel="stylesheet" title="default">
 <link href="{!! asset('css/width-full.css') !!}" rel="stylesheet" title="default">
 <link href="{!! secure_asset('css/width-full.css') !!}" rel="stylesheet" title="default">
-
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<link href="{!! asset('css/sweetalert.css') !!}" rel="stylesheet">
+<link href="{!! secure_asset('css/sweetalert.css') !!}" rel="stylesheet">
 <head>
 
 </head>
@@ -54,8 +56,12 @@
 <script src="{{ asset('js/vendors.js') }}"></script>
 <script src="{{ secure_asset('js/vendors.js') }}"></script>
 
-<script src="{{ assets('js/styleswitcher.js') }}"></script>
-<script src="{{ secure_assets('js/styleswitcher.js') }}"></script>
+<script src="{{ asset('js/styleswitcher.js') }}"></script>
+<script src="{{ secure_asset('js/styleswitcher.js') }}"></script>
+<script src="{{ asset('js/application.js') }}"></script>
+<script src="{{ secure_asset('js/application.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ secure_asset('js/sweetalert.min.js') }}"></script>
 
 <!-- Syntaxhighlighter -->
 <script src="assets/js/syntaxhighlighter/shCore.js"></script>
@@ -63,7 +69,7 @@
 <script src="assets/js/syntaxhighlighter/shBrushJScript.js"></script>
 
 <script src="assets/js/app.js"></script>
-
+<script type="text/javascript" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
 </body>
 </html>

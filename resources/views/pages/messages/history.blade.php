@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container paper-back">
         <ul class="nav nav-tabs" style="margin-top: 70px;">
             <li role="presentation"><a href="{{ route('messages.page') }}">Send Messages</a></li>
             <li role="presentation"><a href="{{ route('messages.get.units') }}">Get Units</a></li>

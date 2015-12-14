@@ -9,9 +9,19 @@
 namespace App\Repositories;
 
 use App\User;
+use App\Pricing;
+use App\UserPayment;
+use App\UserSubscription;
 
 class UserRepository
 {
+
+    private $userSubscription;
+
+    public function __construct(UserSubscription $subscription)
+    {
+        $this->userSubscription = $subscription;
+    }
 
     /**
      * @param $id
@@ -69,5 +79,37 @@ class UserRepository
 
         return $authUser;
     }
+
+    public function confirmUserpayment($id)
+    {
+        $payment = UserPayment::find($id);
+        
+        if($payment->status == 1) {
+            return false;
+        }
+        $payment->status = 1;
+        $payment->save();
+
+        return $this->subscribe($payment->user_id, $payment->amount);
+    }
+
+    public function subscribe($userId, $amount)
+    {
+        $this->userSubscription->user_id = $userId;
+        $this->userSubscription->message_units = $this->computeUnits($amount);
+
+         return $this->userSubscription->save();
+
+    }
+
+
+    public function computeUnits($amount)
+    {
+        $pricing = Pricing::all()->first()->unit_price;
+
+        return floor($amount/$pricing);
+    }
+
+
 
 }

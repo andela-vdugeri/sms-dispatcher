@@ -195,5 +195,6 @@ $(function(){
         }else{     
             $('.roller-title-number-'+slno).html(max);     
         }      
-    }      
+    } 
+
 })(jQuery);

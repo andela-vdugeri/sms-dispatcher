@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <div class="input-group login-input">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="text" class="form-control" placeholder="Email" name="email">
+                                <input type="text" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}">
                             </div>
                             <br>
                             <div class="input-group login-input">

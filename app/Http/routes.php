@@ -90,6 +90,12 @@ Route::get('/messages/units',[
     'middleware'=> ['auth']
 ]);
 
+Route::post('/messages/units', [
+    'uses'      => 'UserController@makePayment',
+    'as'        => 'payments.request',
+    'middleware'=> ['auth']
+]);
+
 Route::get('messages/history', [
     'uses'      => 'UserController@history',
     'as'        => 'messages.history',
@@ -103,9 +109,9 @@ Route::get('/history/{id}',[
 ]);
 
 Route::post('/message/send', [
-    'uses'      => 'MessagesController@send',
-    'as'        => 'message.send',
-    'middleware'=> ['auth']
+    'uses'          => 'MessagesController@send',
+    'as'            => 'message.send',
+    'middleware'    => ['auth']
 ]);
 
 
@@ -120,7 +126,31 @@ Route::post('/message/send', [
 
 
 Route::get('/admin/users', [
-    'uses' => 'AdminController@listUsers',
-    'as'    => 'list.users',
+    'uses'          => 'AdminController@listUsers',
+    'as'            => 'list.users',
+    'middleware'    => ['admin']
+]);
+
+Route::get('/payments', [
+    'uses'          => 'AdminController@listUserPayments',
+    'as'            => 'user.payments',
+    'middleware'    => ['admin']
+]);
+
+Route::get('/pricing', [
+    'uses'      => 'AdminController@showPricing',
+    'as'        => 'admin.pricing',
+    'middleware'=> ['admin']
+]);
+
+Route::post('/pricing/{id}', [
+    'uses'      => 'AdminController@adjustPrice',
+    'as'        => 'pricing.adjust',
+    'middlware' => ['admin']
+]);
+
+Route::post('/payment/confirm/{id}',[
+    'uses'      => 'AdminController@confirmPayment',
+    'as'        => 'payment.confirm',
     'middleware'=> ['admin']
 ]);

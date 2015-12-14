@@ -34,7 +34,6 @@ class AuthController extends Controller
     protected $redirectPath = "/message";
     protected $registerPath = "/register";
     protected $loginPath = '/login';
-    protected $redirectTo = '/';
 
     /**
      * @var UserRepository
@@ -123,10 +122,5 @@ class AuthController extends Controller
         return redirect()->route('messages.page');
     }
 
-    public function authenticated(Request $request, User $user)
-    {
-
-        dd('here');
-    }
 
 }

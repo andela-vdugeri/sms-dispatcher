@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\UserMessage;
+use App\UserPayment;
 use App\Http\Requests;
 use App\UserTransaction;
 use Illuminate\Http\Request;
@@ -67,5 +68,20 @@ class UserController extends Controller
         $transaction->delete();
 
         return redirect()->back();
+    }
+
+    public function makePayment(Request $request, UserPayment $payment)
+    {
+        
+        $userId = auth()->user()->id;
+
+        $payment->user_id = $userId;
+        $payment->amount =  $request->get('amount');
+        $payment->description = $request->get('description');
+        $payment->username = $request->get('username');
+
+        $payment->save();
+
+        return redirect()->back()->with('info', 'confirmation request sent. The admin will notify you shortly');
     }
 }

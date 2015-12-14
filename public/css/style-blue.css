@@ -7971,3 +7971,10 @@ Image placeholders: placemi.com
 .row-grid [class^="col-"] {
   margin-bottom: 20px;
 }
+
+
+.bank-account-details{
+  text-align: left;
+  font-weight: bolder;
+  color:#0098d9;
+}
