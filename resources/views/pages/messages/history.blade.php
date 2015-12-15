@@ -8,8 +8,9 @@
     <div class="container paper-back">
         <ul class="nav nav-tabs" style="margin-top: 70px;">
             <li role="presentation"><a href="{{ route('messages.page') }}">Send Messages</a></li>
-            <li role="presentation"><a href="{{ route('messages.get.units') }}">Get Units</a></li>
+            <li role="presentation"><a href="{{ route('messages.get.units') }}">Buy SMS</a></li>
             <li role="presentation" class="active"><a href="{{ route('messages.history') }}">History</a></li>
+            <li role="presentation"><a href="{{ route('schedule.loadPage') }}">Schedule SMS</a></li>
         </ul>
 
         <div class="row" style="margin-top: 15px;">

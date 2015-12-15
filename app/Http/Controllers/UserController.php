@@ -12,10 +12,8 @@ use App\Repositories\UserRepository;
 use App\Repositories\MessagesRepository;
 use App\Repositories\UserTransactionRepository;
 
-
 class UserController extends Controller
 {
-
     /**
      * @var UserRepository
      */
@@ -58,7 +56,7 @@ class UserController extends Controller
     {
         $transaction = UserTransaction::find($id);
 
-        if( !(auth()->user()->id == $transaction->user->id)) {
+        if (!(auth()->user()->id == $transaction->user->id)) {
             return redirect()->action('HomeController@index');
         }
 
@@ -72,16 +70,19 @@ class UserController extends Controller
 
     public function makePayment(Request $request, UserPayment $payment)
     {
+        if ($request->ajax()) {
+            $userId = auth()->user()->id;
+            $payment->user_id = $userId;
+            $payment->amount =  $request->get('amount');
+            $payment->description = $request->get('description');
+            $payment->username = $request->get('username');
+
+            $payment->save();
+
+            return response()->json(['message' => 'payment details saved']);
+        }
         
-        $userId = auth()->user()->id;
 
-        $payment->user_id = $userId;
-        $payment->amount =  $request->get('amount');
-        $payment->description = $request->get('description');
-        $payment->username = $request->get('username');
-
-        $payment->save();
-
-        return redirect()->back()->with('info', 'confirmation request sent. The admin will notify you shortly');
+        return redirect()->back()->with('info', 'Error sending confirmation request. Please try again');
     }
 }

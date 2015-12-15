@@ -222,4 +222,9 @@ class MessagesController extends Controller
         return $this->addCodeToNumbers($trimmedNumbers);
     }
 
+    public function loadSchedulePage()
+    {
+        return view('pages.messages.schedule');
+    }
+
 }

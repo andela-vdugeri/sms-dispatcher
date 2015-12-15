@@ -5781,7 +5781,6 @@ a.feature-icon:hover {
 .paper-back {
   background-image: url("../img/back.png");
   background-repeat: repeat;
-  position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
@@ -7976,5 +7975,6 @@ Image placeholders: placemi.com
 .bank-account-details{
   text-align: left;
   font-weight: bolder;
+  font-family: Monaco;
   color:#0098d9;
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Pricing;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
@@ -96,7 +97,8 @@ class PagesController extends Controller
 
     public function getMessageUnits()
     {
-        return view('pages.messages.units');
+        $pricing = Pricing::all()->first();
+        return view('pages.messages.units', compact('pricing'));
     }
 
     public function getMessagesHistory(Request $request)

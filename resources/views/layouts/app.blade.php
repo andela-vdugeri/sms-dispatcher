@@ -22,6 +22,10 @@
 <link href="{!! secure_asset('css/width-full.css') !!}" rel="stylesheet" title="default">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
 <link href="{!! asset('css/sweetalert.css') !!}" rel="stylesheet">
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="{!! secure_asset('css/jquery-ui.min.css') !!}" rel="stylesheet">
+<link href="{!! secure_asset('css/jquery-ui.structure.min.css') !!}" rel="stylesheet">
+<link href="{!! asset('css/jquery-ui.structure.min.css') !!}" rel="stylesheet">
 <link href="{!! secure_asset('css/sweetalert.css') !!}" rel="stylesheet">
 <head>
 
@@ -62,6 +66,7 @@
 <script src="{{ secure_asset('js/application.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script src="{{ secure_asset('js/sweetalert.min.js') }}"></script>
+ <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <!-- Syntaxhighlighter -->
 <script src="assets/js/syntaxhighlighter/shCore.js"></script>

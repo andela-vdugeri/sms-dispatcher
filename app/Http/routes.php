@@ -114,6 +114,12 @@ Route::post('/message/send', [
     'middleware'    => ['auth']
 ]);
 
+Route::get('/messages/schedule', [
+    'uses'          => 'MessagesController@loadSchedulePage',
+    'as'            => 'schedule.loadPage',
+    'middleware'    => ['auth']
+]);
+
 
 /*
 |--------------------------------------------------------------------------
