@@ -110,13 +110,11 @@ $(document).ready(function(){
 		});
 	});
 
-
-	$('#calendar').datepicker({
-		inline: true,
-		firstDay: 7,
-		showOtherMonths: true,
+	$('#datepicker').datepicker({
 		changeMonth: true,
-		changeYear: true
+		changeYear: true,
+		showAnim: 'clip',
+		dateFormat: 'yy-mm-dd'
 	});
 });
 

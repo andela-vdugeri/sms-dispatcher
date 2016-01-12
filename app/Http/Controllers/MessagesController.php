@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use App\Http\Requests;
 use App\UserTransaction;
 use Illuminate\Http\Request;
+use App\Http\Requests\SmsRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Psr7\Request as Guzzle;
@@ -17,6 +18,7 @@ class MessagesController extends Controller
 {
 
     private $transactionsRepository;
+
     private $messagesRepository;
 
     public function __construct(UserTransactionRepository $transactionRepository, MessagesRepository $messagesRepository)
@@ -24,83 +26,6 @@ class MessagesController extends Controller
         $this->transactionsRepository   = $transactionRepository;
         $this->messagesRepository       = $messagesRepository;
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
 
     /**
      * Send a message and save the transaction details
@@ -131,7 +56,7 @@ class MessagesController extends Controller
     /**
      * Get the request headers
      * @return array
-     */
+    */
     public function getRequestHeaders()
     {
         $user     = env('SMS_ENDPOINT_USER');
@@ -151,7 +76,7 @@ class MessagesController extends Controller
      *
      * @param Request $request
      * @return string
-     */
+    */
     public function getRequestBody(Request $request)
     {
         return json_encode([
@@ -161,13 +86,15 @@ class MessagesController extends Controller
         ]);
 
     }
+
+
     /**
      * Send the actual message to the client.
      *
      * @param Client $client
      * @param $request
      * @return mixed|string
-     */
+    */
     public function sendMessage(Client $client, $request)
     {
 
@@ -182,49 +109,89 @@ class MessagesController extends Controller
 
     }
 
+    /**
+     * Get the numbers from the request
+    */
     public function getNumbers($numbers)
     {
         $numberArray = explode(',', $numbers);
-        $trimmedNumbers = [];
+        $trimmedNumbers = [ ];
+
         foreach ($numberArray as $key => $value) {
           $trimmedNumber = trim($value);
+
           if ($trimmedNumber == "") {
             continue;
           }
+          
           $trimmedNumbers[$key] = $trimmedNumber;
         }
 
         return $this->trimLeadingZero($trimmedNumbers);
     }
 
+
+    /**
+     * Append +234 to numbers (II8N)
+    */
     public function addCodeToNumbers(array $numbers)
     {
         $prefixedNumbers = [];
 
         foreach ($numbers as $key => $value) {
+
           $prefixedNumbers[$key] = '+234'.$value;
         }
 
         return $prefixedNumbers;
     }
 
+    /**
+     * Remove leading 0 from phone numbers
+    */
     public function trimLeadingZero(array $numbers)
     {
-        $trimmedNumbers = [];
+        $trimmedNumbers = [ ];
 
         foreach ($numbers as $key => $value) {
+
           if ($value[0] === 0) {
+
             $trimmedNumbers[$key] = substr($value, 1);
           }
+
           $trimmedNumbers[$key] = $value;
         }
 
         return $this->addCodeToNumbers($trimmedNumbers);
     }
 
+    /**
+     * Display the schedule message page
+    */
     public function loadSchedulePage()
     {
         return view('pages.messages.schedule');
+    }
+
+
+    /**
+     * schedule Sms sending
+     * @param  SsmRequest $request 
+     * @return 
+    */
+    public function scheduleSms(SmsRequest $request, MessagesRepository $repository)
+    {
+        $scheduleId = $repository->scheduleSms($request);
+
+        $saved = $repository->saveScheduledNumber($this->getNumbers($request->get('numbers')), $scheduleId);
+
+        if ($saved) {
+
+            return redirect()->back()->with('info', 'Messages scheduled. Your account will be updated accordingly');
+        }
+
+        return redirect()->back()->with('info', 'An uknown error occured. Please try again');
     }
 
 }

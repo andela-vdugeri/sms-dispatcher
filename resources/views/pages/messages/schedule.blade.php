@@ -32,19 +32,24 @@
                   @if (session()->has('info'))
                     <div class="alert-success text-center"><h2>{{ session()->get('info') }}</h2></div>
                   @endif
-                    <form  method="post" id="message-form" action="{{ route('message.send')}}">
+                    <form  method="post" id="message-form" action="{{ route('message.schedule')}}">
                         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('numbers')? 'has-error': '' }}">
                             <label for="InputPhoneNumbers">Receiver Phone Numbers(separated by commas)<sup>*</sup></label>
-                            <textarea name="numbers" placeholder="Receiver cell phone numbers... eg 07089898998,08097878667 ..."
-                                      id="inputPhoneNumbers" class="form-control" rows="5">{{Input::old('numbers')}}</textarea>
+                            <textarea name="numbers" placeholder="Receiver cell phone numbers... eg 07089898998,08097878667 ..." id="inputPhoneNumbers" class="form-control" rows="5">{{Input::old('numbers')}}</textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('message')? 'has-error': '' }}">
                             <label for="inputMessage">Message<sup>*</sup></label>
-                            <textarea id="inputMessage" class="form-control" name="message" placeholder="Text message here..."
-                                      rows="5">{{ Input::old('message') }}</textarea>
+                            <textarea id="inputMessage" class="form-control" name="message" placeholder="Text message here..." rows="5">{{ Input::old('message') }}</textarea>
                         </div>
-                        <div id="calendar">
+                        <div class="form-group {{ $errors->has('date') ? 'has-error': '' }}">
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" id="datepicker" name="date" value="{{ old('date') }}">
+                          </div>
+                        </div>
     						
     					</div>
                         <div class="row">

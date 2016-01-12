@@ -120,6 +120,12 @@ Route::get('/messages/schedule', [
     'middleware'    => ['auth']
 ]);
 
+Route::post('/messages/schedule', [
+    'uses'          => 'MessagesController@scheduleSms',
+    'as'            => 'message.schedule',
+    'middleware'    => ['auth']
+]);
+
 
 /*
 |--------------------------------------------------------------------------
