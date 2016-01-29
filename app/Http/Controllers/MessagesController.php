@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SmsRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
 use GuzzleHttp\Psr7\Request as Guzzle;
 use App\Repositories\MessagesRepository;
 use App\Repositories\UserTransactionRepository;
@@ -21,10 +22,14 @@ class MessagesController extends Controller
 
     private $messagesRepository;
 
-    public function __construct(UserTransactionRepository $transactionRepository, MessagesRepository $messagesRepository)
+    private $userRepository;
+
+    public function __construct(UserTransactionRepository $transactionRepository, 
+        MessagesRepository $messagesRepository, UserRepository $userRepository)
     {
         $this->transactionsRepository   = $transactionRepository;
         $this->messagesRepository       = $messagesRepository;
+        $this->userRepository           = $userRepository;
     }
 
     /**
@@ -123,7 +128,7 @@ class MessagesController extends Controller
           if ($trimmedNumber == "") {
             continue;
           }
-          
+
           $trimmedNumbers[$key] = $trimmedNumber;
         }
 
@@ -177,21 +182,74 @@ class MessagesController extends Controller
 
     /**
      * schedule Sms sending
-     * @param  SsmRequest $request 
+     * @param  SmsRequest $request 
      * @return 
     */
     public function scheduleSms(SmsRequest $request, MessagesRepository $repository)
     {
-        $scheduleId = $repository->scheduleSms($request);
 
-        $saved = $repository->saveScheduledNumber($this->getNumbers($request->get('numbers')), $scheduleId);
+        if (! ($this->userRepository->findSubscription() === null) ) {
 
-        if ($saved) {
+            if($this->transactionsRepository->userHasUnits($this->getExpendedUnits($request))) {
 
-            return redirect()->back()->with('info', 'Messages scheduled. Your account will be updated accordingly');
+                $scheduleId = $repository->scheduleSms($request);
+
+                $saved = $repository->saveScheduledNumber($this->getNumbers($request->get('numbers')), $scheduleId);
+
+                if ($saved) {
+
+                    $this->updateUserUnits($request);
+                    
+                    return redirect()
+                        ->back()
+                        ->with('info', 'Messages scheduled. Your account has beeen updated accordingly');
+                }
+
+                return redirect()->back()->with('info', 'An uknown error occured. Please try again');
+
+            } else {
+
+               return redirect()
+                ->back()
+                ->with('info', 'Sorry. You do not have sms units for this transaction.')
+                ->withInput(); 
+            }
+            
+        } else {
+
+            return redirect()
+                ->back()
+                ->with('info', 'Sorry. You do not have sms units for this transaction.')
+                ->withInput();
         }
-
-        return redirect()->back()->with('info', 'An uknown error occured. Please try again');
+        
     }
+
+
+    /**
+     * updateUserUnits update user subscription (units) on Sms schedule
+     * @param  SmsRequest $request 
+     * @return [type]              
+    */
+    protected function updateUserUnits(SmsRequest $request)
+    {
+        $numbers        = $this->getNumbers($request->get('numbers'));
+        $message        = $request->get('message');
+
+        $expendedUnits  = $this->getExpendedUnits($request);
+
+        $this->userRepository->updateSubscription($expendedUnits);
+
+    }
+
+    protected function getExpendedUnits(SmsRequest $request)
+    {
+        return $this->transactionsRepository
+                ->calculateScheduledUnits([
+                    'numbers' => $this->getNumbers($request->get('numbers')),
+                    'message' => $request->get('message')
+                ]);
+    }
+
 
 }

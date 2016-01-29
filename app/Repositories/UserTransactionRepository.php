@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 
+use DB;
 use App\User;
 use App\UserTransaction;
 use Illuminate\Http\Request;
@@ -67,4 +68,27 @@ class UserTransactionRepository
 
       return $units;
     }
+
+
+    public function calculateScheduledUnits($data)
+    {
+        $messageLength = strlen($data['message']);
+        $numbers = count($data['numbers']);
+        $numberOfMessages = ceil($messageLength/160);
+        $units = $numberOfMessages * $numbers;
+
+        return $units;
+    }
+
+    public function userHasUnits($expendedUnits)
+    {
+        $availableUnits = DB::table('user_subscription')
+                            ->where('user_id', auth()->user()->id)
+                            ->first()
+                            ->message_units;
+
+        return ($availableUnits - $expendedUnits) >= 0 ;
+
+    }
+
 }

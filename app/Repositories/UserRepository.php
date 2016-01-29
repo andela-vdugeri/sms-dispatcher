@@ -111,5 +111,21 @@ class UserRepository
     }
 
 
+    public function findSubscription()
+    {
+        return UserSubscription::where('user_id', auth()->user()->id)->first();
+    }
+
+
+    public function updateSubscription($expendedUnits)
+    {
+        $subscription = UserSubscription::where('user_id', auth()->user()->id)->first();
+
+        $subscription->message_units = ($subscription->message_units - $expendedUnits);
+
+        $subscription->save();
+    }
+
+
 
 }

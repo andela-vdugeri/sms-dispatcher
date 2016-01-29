@@ -14,13 +14,16 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     
-
+    /*
+    * List all the users in the database
+     */
     public function listUsers()
     {
     	$users = User::all();
     	
     	return view('admin.home', compact('users'));
     }
+
 
    public function confirmPayment($id, Request $request, UserRepository $userRepository)
    {

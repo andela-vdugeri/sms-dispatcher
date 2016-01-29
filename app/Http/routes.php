@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Welcome Route
@@ -78,28 +79,16 @@ Route::get('/about', [
     'as'   => 'about'
 ]);
 
-Route::get('/message', [
-    'uses'       => 'PagesController@messages',
-    'as'         => 'messages.page',
-    'middleware' => ['auth']
-]);
-
-Route::get('/messages/units',[
-   'uses'       => 'PagesController@getMessageUnits',
-    'as'        => 'messages.get.units',
-    'middleware'=> ['auth']
-]);
-
 Route::post('/messages/units', [
-    'uses'      => 'UserController@makePayment',
-    'as'        => 'payments.request',
-    'middleware'=> ['auth']
+    'uses'          => 'UserController@makePayment',
+    'as'            => 'payments.request',
+    'middleware'    => ['auth']
 ]);
 
-Route::get('messages/history', [
-    'uses'      => 'UserController@history',
-    'as'        => 'messages.history',
-    'middleware'=> ['auth']
+Route::get('/messages',[
+    'uses'          => 'PagesController@history',
+    'as'            => 'messages.page',
+    'middleware'    => ['auth']
 ]);
 
 Route::get('/history/{id}',[
@@ -150,19 +139,19 @@ Route::get('/payments', [
 ]);
 
 Route::get('/pricing', [
-    'uses'      => 'AdminController@showPricing',
-    'as'        => 'admin.pricing',
-    'middleware'=> ['admin']
+    'uses'          => 'AdminController@showPricing',
+    'as'            => 'admin.pricing',
+    'middleware'    => ['admin']
 ]);
 
 Route::post('/pricing/{id}', [
-    'uses'      => 'AdminController@adjustPrice',
-    'as'        => 'pricing.adjust',
-    'middlware' => ['admin']
+    'uses'          => 'AdminController@adjustPrice',
+    'as'            => 'pricing.adjust',
+    'middlware'     => ['admin']
 ]);
 
 Route::post('/payment/confirm/{id}',[
-    'uses'      => 'AdminController@confirmPayment',
-    'as'        => 'payment.confirm',
-    'middleware'=> ['admin']
+    'uses'          => 'AdminController@confirmPayment',
+    'as'            => 'payment.confirm',
+    'middleware'    => ['admin']
 ]);

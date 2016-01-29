@@ -4,11 +4,9 @@ $(document).ready(function(){
 		info: false
 	});
 
-
 	/**
 	 * Adjust pricing
 	 */
-	
 	$('#pricing').click(function(){
 		id = $(this).data('id');
 		BootstrapDialog.show({
@@ -175,17 +173,6 @@ function makePayment(username, description, amount, callback) {
 	});
 	
 }
-
-var div = $('<div></div>');
- $(document).on("click", div, function(e) {
- 	
- });
-
-
-
-div.on('click', function(){
-
-});
 
 
 
