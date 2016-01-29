@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('inspire')
                  ->hourly();
 
-        $schedule->call(App\Repositories\ScheduleWorker::class)
+        $schedule->call('App\Repositories\ScheduleWorker@sendScheduledMessages')
                 ->hourly()
                 ->withoutOverlapping();
     }
