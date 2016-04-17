@@ -28,7 +28,6 @@ class Kernel extends ConsoleKernel
                  ->hourly();
 
         $schedule->call('App\Repositories\ScheduleWorker@sendScheduledMessages')
-                ->hourly()
-                ->withoutOverlapping();
+                ->hourly();
     }
 }
