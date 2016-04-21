@@ -60,12 +60,12 @@
 	                swal({
 	                        title: "Success",
 	                        text: "{!!Session::get('info') !!}",
-	                        type: "success",   
-	                        confirmButtonText: "Ok" 
+	                        type: "success",
+	                        confirmButtonText: "Ok"
 	                    });
 	            </script>
 	        @endif
-       
+
 	    	<div class="absolute-center margin-top">
 		        <div class="text-center">
 		            <div class="transparent-div animated fadeInUp animation-delay-8" style="margin-top:120px;">
@@ -76,12 +76,16 @@
 							<li>0039363098- Arizechukwu Nzekwe (Diamond Bank)</li>
 							<li>0041958161- Arizechukwu Nzekwe (Union Bank)</li>
 		                </ul>
+                    @if($pricing)
 		                <p><h2>A unit costs NGN {{ $pricing->unit_price }}</h2></p>
+                    @else
+                      <p><h2>A unit costs NGN 2.00</h2></p>
+                    @endif
 		                <p class="bank-account-details">
 		                    For online transfers, your description should be in this format:
 		                    <span style='text-align:left'>
 		                        <h2>Payment: Latter Africa SMS</h2>
-		                    </span> 
+		                    </span>
 		                </p>
 		                <div class="form-group">
 		                    <span class="input-group-btn">
@@ -95,7 +99,7 @@
 
 		<div class="tab-pane" id="history">
 		   <div class="col-lg-8">
-		   @if($transactions->count() > 0)
+		   @if($transactions && $transactions->count() > 0)
 			   	@foreach($transactions as $transaction)
 	                <div class="col-md-4 col-sm-6">
 	                    <div class="pricign-box animated fadeInUp animation-delay-7">
@@ -140,7 +144,7 @@
 	                        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 	                        <div class="form-group {{ $errors->has('numbers')? 'has-error': '' }}">
 	                            <label for="InputPhoneNumbers">Receiver Phone Numbers(separated by commas)<sup>*</sup></label>
-	                            <textarea name="numbers" placeholder="Receiver cell phone numbers... eg 07089898998,08097878667 ..." 
+	                            <textarea name="numbers" placeholder="Receiver cell phone numbers... eg 07089898998,08097878667 ..."
 	                            	id="inputPhoneNumbers" class="form-control" rows="5">{{Input::old('numbers')}}</textarea>
 	                        </div>
 	                        <div class="form-group {{ $errors->has('message')? 'has-error': '' }}">
@@ -189,7 +193,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="amount paid" name="amount" required="required">
                 </div>
-        
+
             </form>
         </div>
         <div class="modal-footer">

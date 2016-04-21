@@ -11,7 +11,7 @@ use App\Repositories\UserTransactionRepository;
 
 class PagesController extends Controller
 {
-  
+
     private $userTransaction;
     private $messagesRepo;
 
@@ -43,7 +43,6 @@ class PagesController extends Controller
         $pricing = Pricing::all()->first();
         $transactions = $this->userTransaction->getAllTransactions();
         $repo = $this->messagesRepo;
-
         return view('pages.messages.message', compact('pricing', 'transactions', 'repo'));
     }
 }
