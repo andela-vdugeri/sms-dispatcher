@@ -30,7 +30,6 @@
                                             <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>Sophisticated Messaging Services</li>
                                             <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Focused on building and growing with you</li>
                                         </ul>
-                                        {{--<p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>--}}
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +79,6 @@
                                             <li class="animated bounceInLeft animation-delay-13"><i class="fa fa-check"></i>Expert Strategy Formulation</li>
                                             <li class="animated bounceInLeft animation-delay-15"><i class="fa fa-check"></i>Expert System Building</li>
                                         </ul>
-                                        <p class="animated fadeInUpBig animation-delay-17">Lorem ipsum dolor sit amet consectetur adipisicing elit. In rerum maxime quis tenetur dolor <span>recusandae a nulla</span> qui enim dolorem.</p>
                                     </div>
                                 </div>
                             </div>
