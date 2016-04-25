@@ -16,79 +16,79 @@ use Illuminate\Support\Facades\Auth;
 
 class UserTransactionRepository
 {
-    private $transaction;
+  private $transaction;
 
-    public function __construct(UserTransaction $transaction)
-    {
-        $this->transaction = $transaction;
-    }
-    public function createUserTransaction(UserTransaction $transaction)
-    {
-        $transaction->save();
-    }
+  public function __construct(UserTransaction $transaction)
+  {
+    $this->transaction = $transaction;
+  }
+  public function createUserTransaction(UserTransaction $transaction)
+  {
+    $transaction->save();
+  }
 
-    public function findUserTransactions($id)
-    {
-        return UserTransaction::find($id);
-    }
+  public function findUserTransactions($id)
+  {
+    return UserTransaction::find($id);
+  }
 
-    public function getAllTransactions()
-    {
-        $id = auth()->user()->id;
-        $user = User::find($id);
+  public function getAllTransactions()
+  {
+    $id = auth()->user()->id;
+    $user = User::find($id);
 
-        return $user->transactions;
-    }
+    return $user->transactions;
+  }
 
-    public function destroyUserTransaction($id, $userId)
-    {
-            $userTransaction = UserTransaction::where('id', '=', $id)
-                ->where('user_id', '=', $userId);
+  public function destroyUserTransaction($id, $userId)
+  {
+    $userTransaction = UserTransaction::where('id', '=', $id)
+        ->where('user_id', '=', $userId);
 
-            $userTransaction->delete();
-    }
+    $userTransaction->delete();
+  }
 
-    public function createTransaction(Request $request, $units)
-    {
-        $this->transaction->user_id = Auth::user()->id;
-        $this->transaction->message_units = $units;
-        $this->transaction->receivers = $request->get('numbers');
-        $this->transaction->save();
+  public function createTransaction(Request $request, $units)
+  {
+    $this->transaction->user_id = Auth::user()->id;
+    $this->transaction->message_units = $units;
+    $this->transaction->receivers = $request->get('numbers');
+    $this->transaction->save();
 
-        return $this->transaction->id;
-    }
+    return $this->transaction->id;
+  }
 
-    public function calculateUnits($requestBody)
-    {
-      $data             = json_decode($requestBody);
-      $messageLength    = strlen($data->text);
-      $numbers          = count($data->to);
-      $numberOfMessages = ceil($messageLength/160);
-      $units            =  $numberOfMessages * $numbers;
+  public function calculateUnits($requestBody)
+  {
+    $data             = json_decode($requestBody);
+    $messageLength    = strlen($data->text);
+    $numbers          = count($data->to);
+    $numberOfMessages = ceil($messageLength/160);
+    $units            =  $numberOfMessages * $numbers;
 
-      return $units;
-    }
+    return $units;
+  }
 
 
-    public function calculateScheduledUnits($data)
-    {
-        $messageLength = strlen($data['message']);
-        $numbers = count($data['numbers']);
-        $numberOfMessages = ceil($messageLength/160);
-        $units = $numberOfMessages * $numbers;
+  public function calculateScheduledUnits($data)
+  {
+    $messageLength = strlen($data['message']);
+    $numbers = count($data['numbers']);
+    $numberOfMessages = ceil($messageLength/160);
+    $units = $numberOfMessages * $numbers;
 
-        return $units;
-    }
+    return $units;
+  }
 
-    public function userHasUnits($expendedUnits)
-    {
-        $availableUnits = DB::table('user_subscription')
-                            ->where('user_id', auth()->user()->id)
-                            ->first()
-                            ->message_units;
+  public function userHasUnits($expendedUnits)
+  {
+    $availableUnits = DB::table('user_subscription')
+                        ->where('user_id', auth()->user()->id)
+                        ->first()
+                        ->message_units;
 
-        return ($availableUnits - $expendedUnits) >= 0 ;
+    return ($availableUnits - $expendedUnits) >= 0 ;
 
-    }
+  }
 
 }

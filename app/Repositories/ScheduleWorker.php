@@ -8,7 +8,7 @@ use App\ScheduledMessage;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Psr7\Request as Guzzle;
 
-class ScheduleWorker 
+class ScheduleWorker
 {
 
 
@@ -39,30 +39,26 @@ class ScheduleWorker
 		$smsRequest = new Guzzle('POST', env('SMS_ENDPOINT'), $this->constructHeaders(), $this->constructBody($message));
 
 		 try{
+        $this->client->send($smsRequest);
 
-            $this->client->send($smsRequest);
-
-            return $this->updateMessageSentStatus($message);
-     
+        return $this->updateMessageSentStatus($message);
         } catch (HttpException $e) {
-            return $e->getMessage();
+          return $e->getMessage();
         }
 	}
-
 
 	public function constructHeaders()
 	{
 		$user     = env('SMS_ENDPOINT_USER');
-        $password = env('SMS_ENDPOINT_PASS');
+    $password = env('SMS_ENDPOINT_PASS');
+    $authorization = base64_encode($user.':'.$password);
 
-        $authorization = base64_encode($user.':'.$password);
-
-        return [
-            'acccept'         => 'application/json',
-            'content-type'    => 'application/json',
-            'authorization'   => 'Basic '.$authorization,
-        ];
-	}
+    return [
+        'acccept'         => 'application/json',
+        'content-type'    => 'application/json',
+        'authorization'   => 'Basic '.$authorization,
+    ];
+  }
 
 
 
@@ -76,16 +72,12 @@ class ScheduleWorker
 			$count++;
 		}
 
-		
 		return json_encode([
             'from' => Auth::user()->name,
             'to'   => $messages,
             'text' => $message->message
-        ]);
-
+      ]);
 	}
-
-
 
 	public function updateMessageSentStatus(ScheduledMessage $message)
 	{
