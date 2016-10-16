@@ -1,15 +1,9 @@
 ## Simple Sms Portal
-
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Simple Sms Portal is a web  with expressive, elegant  and simple features. We believe sending bulks sms  must be an enjoyable, creative experience to be truly fulfilling. Simple Sms attempts to take the pain out of bulk sms sending by easing common tasks used in the majority of sms portals.
+Simple Sms Portal is a web app with expressive, elegant  and simple features. Simple Sms attempts to take the pain out of bulk sms sending by easing common tasks used in the majority of sms portals.
 
 Simple Sms portal is accessible, yet powerful, providing powerful tools needed for large receiver base.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
 ## Contributing
 
